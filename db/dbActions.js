@@ -239,32 +239,7 @@ const newClase = async({ guildId, channelId, diaRep, horaRep, clasId, clasContra
     .catch((err) => console.log('Error al crear clase. Err:', err.message));
 
 };
-/*
-const getAllClases = async( idClase ) => {
-    /*
-    Clases.findOne({
-        where: {
-            id: idClase
-        },
-        attributes: ['id', 'clase_repetir'],
-        raw: true
-    }).then(data => {
 
-        (data.length < 1) ? console.log('DataLength of clase by id is empty.') : console.log('Data de clase by id:', data);   
-
-    }).catch(err => console.log('Err getting clases for specific id:', err.message));
-    *
-    const clase = await Clases.findByPk( idClase );
-    if (clase === null) {
-        console.log('ClasebyPk Not found!');
-    } else {
-        console.log('ClasebyPk found! ...');
-        console.log(clase instanceof Clases); // true
-        console.log(clase); // true
-    // Its primary key is 123
-    }
-}
-*/
 // It will get the most nearest clases to send.  
 const getNearestClases = async( dayName, hourToSearch ) => {
     let out = [];

@@ -3,6 +3,7 @@
     ej: "lunes 10:20". Esta funcion lo que hace es ordenar, siendo siempre la
     posición "[0]" la más cercana a la fecha de "hoy".
     - console.log comentados para testing.
+    Función en desuso.
 */
 
 const moment = require('moment');

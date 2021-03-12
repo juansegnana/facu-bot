@@ -14,6 +14,8 @@ Los usuarios usan su servidor de Discord como una `carpeta` donde cada canal es 
 
 ## Configurar
 
-- Clonar este repositorio con `git clone https://github.com/juansegnana/facu-bot.git`.
-- Ir a la carpeta raíz e instalar dependencias con `npm install`.
-- Crear archivo `.env` en raíz. Solo necesitas colocar: `TOKEN_BOT=tu_discord_bot_token`. 
+- Clonar este repositorio con `git clone https://github.com/juansegnana/facu-bot.git`
+- Ir a la carpeta raíz e instalar dependencias con `npm install`
+- Crear archivo `.env` en raíz. Solo necesitas colocar: `TOKEN_BOT=tu_discord_bot_token`.
+- Ir a la carpeta `db/` y ejecutar `node dbInit -f`, el parámetro `-f` es opcional por si querés borrar toda la base de datos. Este comando solo lo realizas una vez o cada vez que cambies los `Models/` de la DB.
+- Ejecutar `npm run dev` en desarrollo, o bien `npm run start`

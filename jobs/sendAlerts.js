@@ -1,5 +1,3 @@
-// CRON SCHEDULER each 5 minutes
-
 const moment = require('moment');
 require('moment/locale/es');
 moment.locale('es');

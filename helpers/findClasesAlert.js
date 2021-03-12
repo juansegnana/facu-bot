@@ -11,6 +11,6 @@ module.exports.findClasesToAlert = async() => {
     const now = moment();
     const dayNow = now.format('dddd');
     const hourNow = now.add('10', 'minutes').format('HH:mm');
-    // console.log(dayNow, hourNow);
+    
     return await getNearestClases(dayNow, hourNow);
 }
