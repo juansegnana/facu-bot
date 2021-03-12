@@ -1,0 +1,40 @@
+{
+  "name": "facu-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot - Class reminder",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juansegnana/facu-bot.git"
+  },
+  "keywords": [
+    "discordjs",
+    "discord",
+    "bot",
+    "class",
+    "reminder",
+    "university"
+  ],
+  "author": "Juan Segnana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juansegnana/facu-bot/issues"
+  },
+  "homepage": "https://github.com/juansegnana/facu-bot#readme",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
+    "sequelize": "^6.5.0",
+    "sqlite3": "^5.0.2",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
