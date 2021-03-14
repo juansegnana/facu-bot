@@ -30,8 +30,9 @@ El prefix por defecto es `__`.
 **Ejemplo**: `__crearmateria AM1, Análisis Matemático 1`
 **Nota**: Abreviatura debe ser 2 o más caracteres.
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de crear materia](./docs/media/crearmateria.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/crearmateria.gif" width="450" alt="Animación mostrando uso de crear materia">
 </details>
 
 ### Editar materia
@@ -40,8 +41,9 @@ El prefix por defecto es `__`.
 **Ejemplo**: `1, AM2`
 **Nota**: Enviar comando y luego elegir campo a editar. Si querés eliminar la materia enviá `3, si`
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de editar materia](./docs/media/editarmateria.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/editarmateria.gif" width="450" alt="Animación mostrando uso de editar materia">
 </details>
 
 ### Crear clase
@@ -50,9 +52,10 @@ El prefix por defecto es `__`.
 **Ejemplo**: `__crearclase sab, 09:30, 123456, 1234, https://google.com/`
 **Nota**: Día de semana deben ser las 3 primeras letras sin acentos: `lun, mar, mie, jue, vie, sab`. La hora debe ser entre las 07:00 y las 23:00 hrs. Si es menor a 10:00 colocar un 0 adelante.
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de crear clase](./docs/media/crearclase.gif)
-    ![Imagen mostrando ejemplo de notificación](./docs/media/clasenotificacion.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/crearclase.gif" width="450" alt="Animación mostrando uso de crear clase">
+    <img src="./docs/media/clasenotificacion.gif" width="450" alt="Imagen mostrando ejemplo de notificación">
 </details>
 
 ### Borrar materia
@@ -61,8 +64,9 @@ El prefix por defecto es `__`.
 **Ejemplo**: `1, si`
 **Nota**: Se van a listar todas las clases creadas en un canal/materia.
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de borrar clase](./docs/media/borrarclase.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/borrarclase.gif" width="450" alt="Animación mostrando uso de borrar clase">
 </details>
 
 ### Help
@@ -71,8 +75,9 @@ El prefix por defecto es `__`.
 **Ejemplo**: `__help crearmateria`
 **Nota**: `__help [comando]` es opcional.
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de comando help](./docs/media/help.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/help.gif" width="450" alt="Animación mostrando uso de comando help">
 </details>
 
 ### Nuevo prefix
@@ -81,6 +86,8 @@ El prefix por defecto es `__`.
 **Ejemplo**: `__newprefix ;`
 **Nota**: Se permite 1 cambio por hora (se va a modificar luego).
 
-<details><summary>Screenshot</summary>
-    ![Animación mostrando uso de comando nuevo prefix](./docs/media/new-prefix.gif)
+<details>
+    &nbsp<summary>Screenshot</summary>
+    <img src="./docs/media/new-prefix.gif" width="450" alt="Animación mostrando uso de comando nuevo prefix">
 </details>
+
