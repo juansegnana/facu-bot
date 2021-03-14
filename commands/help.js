@@ -1,8 +1,7 @@
-
 module.exports = {
     name: 'help',
     aliases: ['ayuda', 'listar', 'comandos'],
-    guildOnly: false,
+    guildOnly: true,
     description: 'Lista todos los comandos de FacuBot',
     args: false,
     cooldown: 5,
@@ -14,22 +13,12 @@ module.exports = {
         const { commands } = message.client;
         // Si no hay argumentos, listar todo.
         if ( !args.length ) {
-
             data.push('Lista de todos los comandos:');
             data.push('```');
             data.push( commands.map( cmd => `-> ${cmd.name}` ).join('\n') );
             data.push('```');
             data.push( `Podés mandar \`[prefix]help [nombre_Del_Comando]\` para más info de cada uno.` );
-            
             return message.channel.send( data, { split: true } );
-            /* return message.author.send( data, { split: true } )
-                .then( () => {
-                    if ( message.channel.type === 'dm' ) return;
-                })
-                .catch( err => {
-                    console.log(`No se pudo mandar DM a ${ message.author.tag }.\nError: ${ err }`);
-                    message.channel.send( data, { split: true } );
-                }); */
         }
         // Si hay argumentos ...
         const name = args[0].toLowerCase();
@@ -38,15 +27,7 @@ module.exports = {
         if ( !command ) {
             return message.reply('ese comando no existe');
         }
-        // Sigue acá si existe comando ...
-        /*
-        data.push(`**Nombre:** \`${ command.name }\``);
-        if ( command.aliases ) data.push(`**Alias:** \`${ command.aliases.join(', ')}\``);
-        if ( command.description ) data.push(`**Descripción:** ${ command.description }`);
-        if ( command.usage ) data.push(`**Uso:** \`${ prefix }${ command.name } ${ command.usage }\``);
-        data.push(`**Tiempo de espera:** \`${ command.cooldown || 3 } segundos\``);
-        // message.channel.send( data, { split: true });
-        */
+    
         const embData = {
             color: 'E9ECED',
             title: 'Info. del comando',

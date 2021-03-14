@@ -15,10 +15,5 @@ module.exports.isValidMateria = ( cmdToDo, arg ) => {
             out = false;
             break;
     }
-    /*  BUG: isAlphanumeric detecta false cuando hay un espacio 
-    console.log(nombreCompleto.length);
-    console.log(validator.isAlphanumeric( nombreCompleto, 'es-ES' ));
-    */
     return out;
-
 }

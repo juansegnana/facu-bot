@@ -1,7 +1,10 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const moment = require('moment');
 const CronJob = require('cron').CronJob;
+
+// const moment = require('moment');
+const moment = require('moment-timezone');
+moment.tz.setDefault("America/Argentina/Buenos_Aires");
 
 require('dotenv').config();
 const { newGuild, deleteGuild, getPrefix, getGuilds, restartIsSended } = require('./db/dbActions');
@@ -80,11 +83,6 @@ client.on('guildDelete', async ({ id, name }) => {
     console.log(`Me borraron de: "${ name }" ID:#${id} \nBorrando datos de DB...`);
     deleteGuildFunction(id);
 });
-/*
-client.on('webhookUpdate', (wh) => {
-    console.log('Update en un webhook');
-})*/
-// Fin eventos create and delete.
 
 client.on('message', async (message) => {
     
@@ -162,11 +160,11 @@ client.on('message', async (message) => {
 client.login( process.env.TOKEN_BOT );
 
 const clasesJob = async() => {
-    // Cron Job 5 minutes.
+    const each5Minutes = '*/5 7-23 * 2-11 1-6';
+    const eachMidnight = '00 00 * * *';
     // Clases Job
-    
     const clasesJob = new CronJob(
-        '*/5 * * * *',
+        each5Minutes,
         async() => {
             // console.log('You will see this message every 1 minute.');
             const resul = await sendAlerts();
@@ -188,7 +186,7 @@ const clasesJob = async() => {
 
     // RestartJob -> midnight
     const restartJob = new CronJob(
-        '00 00 * * *',
+        eachMidnight,
         () => {
             restartIsSended();
         },

@@ -1,6 +1,6 @@
 {
   "name": "facu-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discord Bot - Class reminder",
   "main": "app.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
     "sequelize": "^6.5.0",
     "sqlite3": "^5.0.2",
     "validator": "^13.5.2"

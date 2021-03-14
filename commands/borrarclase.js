@@ -17,7 +17,7 @@ module.exports = {
         const channelId = message.channel.id
         
         const isExistentChannel = await getChannel(channelId);
-        // console.log('Data de isExistent:', isExistentChannel);
+        
         if (!isExistentChannel) return message.channel.send('❌ Materia no existente.\nPara crear ver comando: \`[prefix]help crearmateria\`.');
 
         const resul = await Clases.findAll({
@@ -27,18 +27,7 @@ module.exports = {
             raw: true
         });
 
-        // console.log('Que obtuvo el findAll:', resul);
         if (resul.length < 1) return message.channel.send('❌ No existen clases en este canal.\nPara crear ver comando: \`[prefix]help crearclase\`.');
-        
-        /*
-        const map = resul.map((val, ind) => {
-            return {
-                id: val.id,
-                index: ind
-            };
-        });
-        console.log('Mapp:', map);
-        */
         
         const materiaEditarResumen = {
             color: 'CF6394',
@@ -61,28 +50,23 @@ module.exports = {
         };
 
         message.channel.send({ embed: materiaEditarResumen });
-        // return;
+
         const filter = (m) => m.author.id === message.author.id;
         const collector = new Discord.MessageCollector( message.channel, filter, { max: 1, time: 30000} );
 
         collector.on('end', async (collected) => {
 
-            // const commandAllowed = [0,1,2];
             const commandAllowed = resul.length;
 
             if ( collected.size === 0) return message.channel.send('💥 No se editó.');
             
             const argsJoined = collected.first().content.split(',').map( arg => arg.trim() );
             const claseIndex = parseInt(argsJoined[0]);
-            /*
-            // console.log('eee');
-            console.log(!commandAllowed.includes(commandChoose));*/
+
             if (argsJoined.length !== 2) return message.channel.send('💥 No se editó. La respuesta debe ser por ejemplo: \`1, si\`.');
             if (claseIndex > commandAllowed || claseIndex < 1) return message.channel.send('💥 No se editó. Ese número de clase no existe.');
             if (argsJoined[1] !== 'si') return message.channel.send('❌ Falta confirmar!');
-            // return message.channel.send('Bien pe. 3.');;
-            // const arrCommand = ['abrev', 'nombre', 'delete' ];
-            // const commandToDo = arrCommand[ commandChoose ];
+
             const indexFix = parseInt(argsJoined[0])-1;
             
             message.channel.send('⏱ Borrando materia ...')

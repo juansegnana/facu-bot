@@ -6,20 +6,14 @@ const { Guilds } = require("../db/dbObjects");
 const ARGS_REQUIRED = 2;
 
 const isValid = ([ abreviatura, nombreCompleto ]) => {
-
     if (abreviatura.length < 2 || !validator.isAlphanumeric( abreviatura, 'es-ES' )) return false;
-    /*  BUG: isAlphanumeric detecta false cuando hay un espacio 
-    console.log(nombreCompleto.length);
-    console.log(validator.isAlphanumeric( nombreCompleto, 'es-ES' ));
-    */
     if (nombreCompleto.length < 2) return false;
     return true;
-
 }
 
 module.exports = {
     name: 'crearmateria',
-    aliases: ['nuevamateria', 'materianueva', 'nuemat', 'cm'],
+    aliases: ['crma', 'cm', 'nuevamateria', 'materianueva', 'nuemat'],
     guildOnly: true,
     description: 'Crear nueva materia',
     args: true,
@@ -85,12 +79,13 @@ module.exports = {
                 return message.channel.send('No se guardó la materia.')
                 .then(m => {
                     msgUsed.push( m );
-                    // console.log(msgUsed); Se puede colocar como función...
+                    
                     setTimeout(() => {
                         Promise.all(msgUsed.map( msg => msg.delete() ))
                         .then(()=> console.log(`Se borraron ${ msgUsed.length }.`) )
                         .catch((err)=> console.log('Error borrando msg de crearMateria:', err.message));
                     }, 5000);
+                    
                 });
             } 
             

@@ -1,12 +1,10 @@
 const Discord = require("discord.js");
-
-const moment = require("moment");
 const { getChannel, getDataChannel, newClase } = require("../db/dbActions");
 const { Channels } = require("../db/dbObjects");
-// const { formatDates } = require("../helpers/formatDates");
-require('moment/locale/es');
+const { LIMIT_PER_MATERIA } = require('../config.json');
 
-const FREE_LIMIT_PER_MATERIA = 10;
+const moment = require("moment");
+require('moment/locale/es');
 
 module.exports = {
     name: 'crearclase',
@@ -20,7 +18,7 @@ module.exports = {
     async execute( message, args ) {
         
         moment.locale('es');
-        // const claseId = args[0].trim();
+        
         const guildId = message.guild.id;
         const channelId = message.channel.id;
 
@@ -30,25 +28,20 @@ module.exports = {
             
         const { cant_clases } = await getDataChannel(channelId);
         console.log('Cant clases:', cant_clases);
-        if (cant_clases >= FREE_LIMIT_PER_MATERIA) return message.channel.send(`✋ Este server llegó al limite de ${ FREE_LIMIT_PER_MATERIA } clases por materia.`);
+        if (cant_clases >= LIMIT_PER_MATERIA) return message.channel.send(`✋ Este server llegó al limite de ${ FREE_LIMIT_PER_MATERIA } clases por materia.`);
 
         const argsJoined = args.join(' ').split(',').map( arg => arg.trim() );
         if (argsJoined.length < 5) return message.channel.send('Faltan parámetros! Ver comando [prefix]help crearmateria') 
         const daysAllowed = ['lun','mar','mie','jue','vie','sab'];
         const [ dayName, hourStart, id, contra, link ] = argsJoined;
-        // const [ dayName, hourStart, hourEnd ] = argsJoined;
         
         let isValid = true;
-        // TODO Hacer function checkClaseData(), enviar argsJoined. Retornar true/false.
+
         if ( !daysAllowed.includes(dayName) ) isValid = false;
         if ( !moment(hourStart, 'HH:mm', true).isValid() ) isValid = false;
         if ( id.length > 20 ) isValid = false;
         if ( contra.length > 20 ) isValid = false;
         if ( link.length > 50 ) isValid = false;
-        /*if ( !moment(hourEnd, 'HH:mm', true).isValid() ) isValid = false;
-        if (isValid) {
-            if ( hourEnd <= hourStart ) isValid = false;
-        }*/
 
         const msgNotValid = '1)Qué día de la semana es la clase? Ejemplo: \`lun, mar, mie, jue, vie, sab\`.\n2)A que hora comienza? Ej: \`14:20\`.\n3)A que hora termina? Ej:\`16:40\`.\nResponder en 1 mensaje, separando cada argumento por una coma. Ejemplo: \`lun, 13:30, 15:40\`.';
         if (!isValid) return message.channel.send(`No válido. Fijate que cumple el siguiente formato:\n ${msgNotValid}`)
@@ -59,7 +52,6 @@ module.exports = {
         
         // creating process
         const claseResumen = {
-            // color: 0x0099ff,
             color: '8EB8AD',
             title: `🆕 Agregando clase Nro. ${cant_clases+1}`,
             description: '🚨 Confirmar clase nueva. Escribir "si"/"no" (en 30 segundos deja de esperar).',
@@ -80,7 +72,7 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: '4) Contraña de clase',
+                    name: '4) Contraseña de clase',
                     value: contra,
                     inline: true
                 },
@@ -97,7 +89,7 @@ module.exports = {
         };
 
         message.channel.send({ embed: claseResumen });
-        // return message.channel.send('Cancelando.');
+        
         const filter = (m) => m.author.id === message.author.id;
         const collector = new Discord.MessageCollector( message.channel, filter, { max: 1, time: 30000} );
 
@@ -108,7 +100,7 @@ module.exports = {
 
             message.channel.send('⏱ Agregando clase y nueva notificación ...')
             .then( async (msg) => {
-                // const repCada = ;
+                
                 const newClaseData = {
                     guildId: guildId,
                     channelId: channelId,
@@ -123,7 +115,7 @@ module.exports = {
                 const isUpdated = await Channels.update({ 'cant_clases': cant_clases + 1 },{
                     where: { 'channel_id': channelId }
                 });
-                // console.log('Que da isUpdated?', isUpdated);
+                
                 if (isUpdated[0] !== 1) return msg.edit('❌ Error interno al agregar clase.');
 
                 return msg.edit('👌 Se agregó nueva clase!');

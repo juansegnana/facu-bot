@@ -11,7 +11,8 @@ require('./models/Guilds')(sequelize, Sequelize.DataTypes);
 require('./models/Channels')(sequelize, Sequelize.DataTypes);
 require('./models/Clases')(sequelize, Sequelize.DataTypes);
 
-// if force in terminal => delete all data.
+// if (force) in terminal => delete all data.
+// if you want to reset model-> node dbInit.js --force or -f
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
 sequelize.sync({ force }).then( async () => {
@@ -21,6 +22,3 @@ sequelize.sync({ force }).then( async () => {
 
 })
 .catch( console.error );
-
-// execute: node dbInit.js
-// if you want to reset model-> node dbInit.js --force or -f

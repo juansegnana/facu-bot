@@ -12,8 +12,8 @@ module.exports = {
     args: false,
     usage: 'Enviar [prefix]editarmateria y elegir campo a editar',
     permissions: 'MANAGE_CHANNELS',
-    cooldown: 20,
-    async execute( message, args ) {
+    cooldown: 10,
+    async execute( message ) {
         
         const guildId = message.guild.id;
         const channelId = message.channel.id
@@ -36,12 +36,12 @@ module.exports = {
                 },
                 {
                     name: '\`2\`) Nombre completo',
-                    value: nombre,
+                    value: `${ nombre }`,
                     inline: false,
                 },
                 {
                     name: '\`3\`) Eliminar?',
-                    value: 'Elimina esta materia y las notificaciones.',
+                    value: 'Elimina esta materia y las notificaciones. Enviar: 3, si',
                     inline: false
                 }
             ],
