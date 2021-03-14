@@ -9,7 +9,7 @@ const newGuild = async( guildId ) => {
             guild_id: guildId
         }
         }).then(function(favorite) {
-        // console.log('que da fav:', favorite)
+            
         if (favorite !== null) {
             console.log('Este guild ya existe.');
             return output = false;
@@ -103,7 +103,7 @@ const getPrefix = async( guildId ) => {
     })
     .then( (data) => {
         if ( data.length < 1 ) return console.log('Error encontrando prefix guild.')
-        //console.log('prefix of guild:', data);
+
         output = data.prefix;
     })
     .catch(err => console.log(err.message));
@@ -175,7 +175,6 @@ const newChannel = async({ channelId, guildId, abr, name }) => {
         guild_id: guildId,
         abrev: abr,
         nombre: name,
-        // perfom_at: 'pending',
         cant_clases: 0
     })
     .then(() => {
@@ -240,7 +239,6 @@ const newClase = async({ guildId, channelId, diaRep, horaRep, clasId, clasContra
 
 };
 
-// It will get the most nearest clases to send.  
 const getNearestClases = async( dayName, hourToSearch ) => {
     let out = [];
     await Clases.findAll({
@@ -254,9 +252,8 @@ const getNearestClases = async( dayName, hourToSearch ) => {
     }).then( (data) => {
         
         if (data.length < 1) {
-            console.log('DataLength of clase is empty.')
             return out;
-        }; // : console.log('Data de clases:', data);   
+        };   
         data.forEach((el) => {
             
             out.push(el);
@@ -275,7 +272,7 @@ const restartIsSended = async() => {
         raw: true
     })
     .then(async(data) => {
-        // console.log(data);
+        
         data.forEach(async(el) => await Clases.update({ isSended: 0 }, { where: { id: el.id } }));
     });
     console.log('Se reiniciaron los isSended');

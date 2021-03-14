@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const CronJob = require('cron').CronJob;
 
-// const moment = require('moment');
 const moment = require('moment-timezone');
 moment.tz.setDefault("America/Argentina/Buenos_Aires");
 
@@ -166,14 +165,14 @@ const clasesJob = async() => {
     const clasesJob = new CronJob(
         each5Minutes,
         async() => {
-            // console.log('You will see this message every 1 minute.');
+        
             const resul = await sendAlerts();
             console.log(resul);
             if (resul.length < 1) return console.log('Length es 0');
             
             resul.forEach(async ({clId, chId, embData}) => {
                 const channelToSend = await client.channels.fetch(chId);
-                // console.log('channelToSend:', channelToSend);
+                
                 await channelToSend.send({ embed: embData });
                 await Clases.update({ 'isSended': 1 }, { where: { id: clId } });
             });

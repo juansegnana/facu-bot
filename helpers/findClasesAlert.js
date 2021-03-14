@@ -3,9 +3,11 @@ const { getNearestClases } = require("../db/dbActions");
 const dayNow = 'miércoles';
 const hourNow = '15:20';
 */
-const moment = require('moment');
-require('moment/locale/es');
+
+const moment = require('moment-timezone');
 moment.locale('es');
+moment.tz.setDefault("America/Argentina/Buenos_Aires");
+require('moment/locale/es');
 
 module.exports.findClasesToAlert = async() => {
     const now = moment();
