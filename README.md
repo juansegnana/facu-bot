@@ -25,69 +25,72 @@ Los usuarios usan su servidor de Discord como una `carpeta` donde cada canal es 
 El prefix por defecto es `__`.
 
 ### Crear materia
-**Comando**: `__crearmateria`
-**Uso**: `<abreviatura>, <nombre_materia>`
-**Ejemplo**: `__crearmateria AM1, Análisis Matemático 1`
-**Nota**: Abreviatura debe ser 2 o más caracteres.
-
-<details>
+- **Comando**: `__crearmateria`
+- **Uso**: `<abreviatura>, <nombre_materia>`
+- **Ejemplo**: `__crearmateria AM1, Análisis Matemático 1`
+- **Nota**: Abreviatura debe ser 2 o más caracteres.
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/crearmateria.gif" width="450" alt="Animación mostrando uso de crear materia">
+    <img src="./docs/media/crearmateria.gif" width="500" alt="Animación mostrando uso de crear materia">
 </details>
+
+---
 
 ### Editar materia
-**Comando**: `__editarmateria`
-**Uso**: `<campo_a_editar>, <valor_nuevo>`
-**Ejemplo**: `1, AM2`
-**Nota**: Enviar comando y luego elegir campo a editar. Si querés eliminar la materia enviá `3, si`
-
-<details>
+- **Comando**: `__editarmateria`
+- **Uso**: `<campo_a_editar>, <valor_nuevo>`
+- **Ejemplo**: `1, AM2`
+- **Nota**: Enviar comando y luego elegir campo a editar. Si querés eliminar la materia enviá `3, si`
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/editarmateria.gif" width="450" alt="Animación mostrando uso de editar materia">
+    <img src="./docs/media/editarmateria.gif" width="500" alt="Animación mostrando uso de editar materia">
 </details>
+
+---
 
 ### Crear clase
-**Comando**: `__crearclase`
-**Uso**: `<dia-semana>, <hora-inicio>, <id>, <contraseña>, <link-clase>`
-**Ejemplo**: `__crearclase sab, 09:30, 123456, 1234, https://google.com/`
-**Nota**: Día de semana deben ser las 3 primeras letras sin acentos: `lun, mar, mie, jue, vie, sab`. La hora debe ser entre las 07:00 y las 23:00 hrs. Si es menor a 10:00 colocar un 0 adelante.
-
-<details>
+- **Comando**: `__crearclase`
+- **Uso**: `<dia-semana>, <hora-inicio>, <id>, <contraseña>, <link-clase>`
+- **Ejemplo**: `__crearclase sab, 09:30, 123456, 1234, https://google.com/`
+- **Nota**: Día de semana deben ser las 3 primeras letras sin acentos: `lun, mar, mie, jue, vie, sab`. La hora debe ser entre las 07:00 y las 23:00 hrs. Si es menor a 10:00 colocar un 0 adelante.
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/crearclase.gif" width="450" alt="Animación mostrando uso de crear clase">
-    <img src="./docs/media/clasenotificacion.gif" width="450" alt="Imagen mostrando ejemplo de notificación">
+    <img src="./docs/media/crearclase.gif" width="500" alt="Animación mostrando uso de crear clase">
+    <img src="./docs/media/clasenotificacion.gif" width="500" alt="Imagen mostrando ejemplo de notificación">
 </details>
+
+---
 
 ### Borrar materia
-**Comando**: `__borrarmateria`
-**Uso**: `<clase_a_borrar>, si`
-**Ejemplo**: `1, si`
-**Nota**: Se van a listar todas las clases creadas en un canal/materia.
-
-<details>
+- **Comando**: `__borrarmateria`
+- **Uso**: `<clase_a_borrar>, si`
+- **Ejemplo**: `1, si`
+- **Nota**: Se van a listar todas las clases creadas en un canal/materia.
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/borrarclase.gif" width="450" alt="Animación mostrando uso de borrar clase">
+    <img src="./docs/media/borrarclase.gif" width="500" alt="Animación mostrando uso de borrar clase">
 </details>
+
+---
 
 ### Help
-**Comando**: `__help`
-**Uso**: `[comando]`
-**Ejemplo**: `__help crearmateria`
-**Nota**: `__help [comando]` es opcional.
-
-<details>
+- **Comando**: `__help`
+- **Uso**: `[comando]`
+- **Ejemplo**: `__help crearmateria`
+- **Nota**: `__help [comando]` es opcional.
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/help.gif" width="450" alt="Animación mostrando uso de comando help">
+    <img src="./docs/media/help.gif" width="500" alt="Animación mostrando uso de comando help">
 </details>
+
+---
 
 ### Nuevo prefix
-**Comando**: `__new-prefix`
-**Uso**: `<nuevo_prefix>`
-**Ejemplo**: `__newprefix ;`
-**Nota**: Se permite 1 cambio por hora (se va a modificar luego).
-
-<details>
+- **Comando**: `__new-prefix`
+- **Uso**: `<nuevo_prefix>`
+- **Ejemplo**: `__newprefix ;`
+- **Nota**: Se permite 1 cambio por hora (se va a modificar luego).
+- <details>
     &nbsp<summary>Screenshot</summary>
-    <img src="./docs/media/new-prefix.gif" width="450" alt="Animación mostrando uso de comando nuevo prefix">
+    <img src="./docs/media/new-prefix.gif" width="500" alt="Animación mostrando uso de comando nuevo prefix">
 </details>
-
