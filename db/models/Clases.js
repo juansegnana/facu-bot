@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         isSended: {
             type: DataTypes.INTEGER,
             defaultValue: 0
-        }
+        },
+        nota: DataTypes.TEXT
     });
 
 };

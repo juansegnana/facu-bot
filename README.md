@@ -50,8 +50,8 @@ El prefix por defecto es `__`.
 
 ### Crear clase
 - **Comando**: `__crearclase`
-- **Uso**: `<dia-semana>, <hora-inicio>, <id>, <contraseña>, <link-clase>`
-- **Ejemplo**: `__crearclase sab, 09:30, 123456, 1234, https://google.com/`
+- **Uso**: `<dia-semana>, <hora-inicio>, <id>, <contraseña>, <link-clase> [, nota (opcional)]`
+- **Ejemplo**: `__crearclase sab, 09:30, 123456, 1234, https://google.com/, Comision1A`
 - **Nota**: Día de semana deben ser las 3 primeras letras sin acentos: `lun, mar, mie, jue, vie, sab`. La hora debe ser entre las 07:00 y las 23:00 hrs. Si es menor a 10:00 colocar un 0 adelante.
 - <details>
     &nbsp<summary>Screenshot</summary>

@@ -33,7 +33,7 @@ module.exports.sendAlerts = async () => {
         const random = Math.floor(Math.random() * colors.length);
         const colorRandom = colors[random];
         
-        const claseEmbed = {
+        let claseEmbed = {
             color: colorRandom,
             title: '⏰ Una clase está por comenzar',
             url: `${ clase.clase_link }`,
@@ -56,6 +56,17 @@ module.exports.sendAlerts = async () => {
                 }
             ],
             timestamp: new Date()
+        };
+
+        if (clase.notas) {
+            claseEmbed.fields = [ 
+                {
+                    name: 'Notas',
+                    value: clase.notas,
+                    inline: true
+                },
+                ...claseEmbed.fields
+            ];
         };
 
         out.push({clId: clase.id, chId: clase.channel_id, embData: claseEmbed});

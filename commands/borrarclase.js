@@ -11,9 +11,8 @@ module.exports = {
     usage: 'Enviar [prefix]borrarclase y seleccionar materia',
     permissions: 'MANAGE_CHANNELS',
     cooldown: 20,
-    async execute( message, args ) {
+    async execute( message ) {
         
-        const guildId = message.guild.id;
         const channelId = message.channel.id
         
         const isExistentChannel = await getChannel(channelId);
@@ -34,11 +33,11 @@ module.exports = {
             title: `✍ Borrando clase.`,
             description: '+ Elegir clase a borrar y la palabra "si" separado por coma. Ejemplo: \`1, si\`\n(en 30 segundos deja de esperar).\nPD: Si querés borrar todas las clases de este canal, usá el comando \`editarmateria\`.',
             fields: [
-                resul.map(({ clase_repetir, clase_horarep, clase_id, clase_contra, clase_link }, ind) => {
+                resul.map(({ clase_repetir, clase_horarep, clase_id, clase_contra, clase_link, nota }, ind) => {
                     ind += 1;
                     return {
                         name: `Clase Nro. \`${ind}\`.`,
-                        value: `Info de clase:\n-Cada ${clase_repetir} a las ${clase_horarep}.\n-ID: ${clase_id}, CONTRA: ${clase_contra}.\n-Link: ${clase_link}.\nEnviar \`${ind}, si\` para borrar.`,
+                        value: `Info de clase:\n-Cada ${clase_repetir} a las ${clase_horarep}.\n-ID: ${clase_id}, CONTRA: ${clase_contra}.\n-Link: ${clase_link}.${(nota === 'false') ? `` : `\n-Nota: ${nota}`}\nEnviar \`${ind}, si\` para borrar.`,
                         inline: false
                     };
                 })

@@ -223,7 +223,7 @@ const deleteChannel = async(channelId) => {
     return out;
 }
 
-const newClase = async({ guildId, channelId, diaRep, horaRep, clasId, clasContra, clasLink }) => {
+const newClase = async({ guildId, channelId, diaRep, horaRep, clasId, clasContra, clasLink, nota }) => {
 
     Clases.create({
         guild_id: guildId,
@@ -232,7 +232,8 @@ const newClase = async({ guildId, channelId, diaRep, horaRep, clasId, clasContra
         clase_horarep: horaRep,
         clase_id: clasId,
         clase_contra: clasContra,
-        clase_link: clasLink
+        clase_link: clasLink,
+        nota: nota
     })
     .then(() => console.log('Se creó clase.'))
     .catch((err) => console.log('Error al crear clase. Err:', err.message));
@@ -247,7 +248,7 @@ const getNearestClases = async( dayName, hourToSearch ) => {
             clase_horarep: { [Op.lte]: hourToSearch }, // clase_horarep <= '12:30'
             isSended: { [Op.eq]: 0 }
         },
-        attributes: ['id', 'channel_id', 'clase_horarep', 'clase_id', 'clase_contra', 'clase_link'],
+        attributes: ['id', 'channel_id', 'clase_horarep', 'clase_id', 'clase_contra', 'clase_link', 'nota'],
         raw: true
     }).then( (data) => {
         

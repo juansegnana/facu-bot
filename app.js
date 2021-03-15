@@ -168,7 +168,7 @@ const clasesJob = async() => {
         
             const resul = await sendAlerts();
             console.log(resul);
-            if (resul.length < 1) return console.log('Length es 0');
+            if (resul.length < 1) return console.log('Length es 0. No hay clases para avisar.');
             
             resul.forEach(async ({clId, chId, embData}) => {
                 const channelToSend = await client.channels.fetch(chId);
