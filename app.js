@@ -170,11 +170,13 @@ const clasesJob = async() => {
             console.log(resul);
             if (resul.length < 1) return console.log('Length es 0. No hay clases para avisar.');
             
-            resul.forEach(async ({clId, chId, embData}) => {
+            await resul.forEach(async ({clId, chId, embData}) => {
                 const channelToSend = await client.channels.fetch(chId);
                 
                 await channelToSend.send({ embed: embData });
+                console.log('Se envió alerta.')
                 await Clases.update({ 'isSended': 1 }, { where: { id: clId } });
+                console.log('Se actualizó isSended a "1".')
             });
         },
         null,
