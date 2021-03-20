@@ -245,7 +245,7 @@ const getNearestClases = async( dayName, hourToSearch ) => {
     await Clases.findAll({
         where: {
             clase_repetir: { [Op.eq]: dayName }, // clase_repetir = 'miércoles'
-            clase_horarep: { [Op.lte]: hourToSearch }, // clase_horarep <= '12:30'
+            clase_horarep: { [Op.lte]: hourToSearch }, // clase_horarep <= '(12:30+10min)'
             isSended: { [Op.eq]: 0 }
         },
         attributes: ['id', 'channel_id', 'clase_horarep', 'clase_id', 'clase_contra', 'clase_link', 'nota'],
@@ -256,9 +256,7 @@ const getNearestClases = async( dayName, hourToSearch ) => {
             return out;
         };   
         data.forEach((el) => {
-            
             out.push(el);
-
         });    
     });
     
@@ -274,10 +272,13 @@ const restartIsSended = async() => {
     })
     .then(async(data) => {
         
-        data.forEach(async(el) => await Clases.update({ isSended: 0 }, { where: { id: el.id } }));
+        data.forEach(async(el) => {
+            const resulUpdateToZero = await Clases.update({ isSended: 0 }, 
+            { where: { id: el.id } });
+            console.log('Que da resulUpdateToZero:', resulUpdateToZero);
+        });
     });
     console.log('Se reiniciaron los isSended');
-
 }
 
 module.exports = {

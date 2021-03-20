@@ -14,10 +14,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.replit
 
-### Commands ###
+### Commands and testing ###
 commands/kick.js
 commands/ping.js
 commands/reload.js
 commands/testing.js
 commands/webhook.js
+testing.js

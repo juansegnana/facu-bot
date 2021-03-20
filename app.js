@@ -44,6 +44,7 @@ const deleteGuildFunction = async(guildId) => {
 }
 
 client.once('ready', async() => {
+    
     const arrBotGuilds = client.guilds.cache.map(guild => guild.id);
     const arrDb = await getGuilds();
     
@@ -160,24 +161,30 @@ client.login( process.env.TOKEN_BOT );
 
 const clasesJob = async() => {
     const each5Minutes = '*/5 7-23 * 2-11 1-6';
-    const eachMidnight = '00 00 * * *';
+    const eachMidnight = '43 9 * * *';
     // Clases Job
     const clasesJob = new CronJob(
         each5Minutes,
         async() => {
+            
         
             const resul = await sendAlerts();
             console.log(resul);
             if (resul.length < 1) return console.log('Length es 0. No hay clases para avisar.');
             
-            await resul.forEach(async ({clId, chId, embData}) => {
+            await resul.forEach(async ({chId, embData}) => {
                 const channelToSend = await client.channels.fetch(chId);
                 
                 await channelToSend.send({ embed: embData });
-                console.log('Se envió alerta.')
-                await Clases.update({ 'isSended': 1 }, { where: { id: clId } });
-                console.log('Se actualizó isSended a "1".')
+                console.log('Se envió una alerta.')
+                
             });
+
+            await resul.forEach( async({ clId }) => {
+                await Clases.update({ 'isSended': 1 }, { where: { id: clId } }).then(algo => console.log('Se actualizó a 1. Que da algo:', algo))
+                .catch(err => console.log('Error update a 1. Que da err:', err.message));
+                
+            })
         },
         null,
         true,
@@ -188,8 +195,9 @@ const clasesJob = async() => {
     // RestartJob -> midnight
     const restartJob = new CronJob(
         eachMidnight,
-        () => {
-            restartIsSended();
+        async() => {
+            await restartIsSended();
+            console.log('Se reinició los IsSended.')
         },
         null,
         true,
